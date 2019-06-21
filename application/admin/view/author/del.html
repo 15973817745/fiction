@@ -1,0 +1,206 @@
+<!-- 头部文件 -->
+{include file="public/header" /}
+
+	<body class="no-skin">
+
+	<!-- 	导航栏和选择框 -->
+{include file="public/menu" /}
+				
+
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li id="mData">
+								<i class="ace-icon fa fa-home home-icon active"></i>
+								<a href="{:url('index/index')}">首页</a>
+							</li>
+							<li id="mData">
+								<i class=" active"></i>
+								<a href="{:url('author/del')}">已被封列表</a>
+							</li>
+						</ul><!-- /.breadcrumb -->
+
+						<!-- 选择样式 -->
+					{include file='public/page' /}
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+										<h3 class="header smaller lighter blue"></h3>
+										<form action="{:url('author/dellist')}" method="post">
+											<button type="submit" class=" pull-left btn btn-sm"style="margin:5px;">
+															<span class="bigger-110">转至待审列表</span>
+														</button>
+											</form><!-- 添加按钮 -->	
+										<div class="clearfix">
+											<div class="pull-right tableTools-container"></div>
+										</div>
+
+										<div class="table-header">
+										用户
+										</div>
+
+										<!-- div.table-responsive -->
+
+									<div class="page-container">
+<div class="cl pd-5 bg-1 bk-gray mt-20" style="margin:20px;padding:0 0 0 70px;"> 
+	<div class="text-c">
+		<form action="{:url('author/del')}" method="get">
+ 	 <span class="select-box inline">
+			<select name="caty_id" class="select  cityId">
+				<option value="0">全部省份</option>
+				{volist name='citys' id='vo'}
+				{if condition ='$vo.parent_id eq 0'}
+				<option value="{$vo.id}" {if condition ="$vo.id eq $Request.get.caty_id"}selected="selected"{/if}>{$vo.name}</option>
+				{/if}
+				{/volist}
+			</select>
+		</span>
+		<span class="select-box inline">
+			<select name="city_id" class="select  se_city_id">
+				<option value="0">全部城市</option>
+			   <option value="0">--请选择--</option>
+                </select>
+		</span>
+		 
+	日期范围：
+		<input type="text" name="start_time" class="input-text" id="countTimestart" onfocus="selecttime(1)" value="{$Request.get.start_time}" style="width:120px;" >
+			-
+		<input type="text" name="end_time" class="input-text" id="countTimestart" onfocus="selecttime(1)" value="{$Request.get.end_time}"  style="width:120px;">
+		<input type="text" name="username" id="" placeholder=" 作者名称" style="width:250px" class="input-text" value='{$Request.get.username}'>
+		<button name="" id="" class="btn btn-success btn-sm btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i><span class="bigger-110"> 搜索</span>
+		</button>
+	</form>
+	</div>
+</div>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+				<tr class="text-c">
+					<th width="20">ID</th>
+					<th width="60">名字</th>
+					<th width="60">城市</th>
+					<th width="80">电话</th>
+					<th width="80">邮箱</th>
+					<th width="80">创建时间</th>
+					<th width="60">排序</th>
+					<th width="60">状态</th>
+					<th width="40">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+	
+{volist name='author' id='vo'}
+				<tr class="text-c">
+					<td>{$vo.id}</td>
+					<td>{$vo.username}</td>
+					<td>{$cityArrs[substr($vo.city_path, 2)]}</td>
+					<td>{$vo.tel}</td>
+					<td>{$vo.email}</td>
+					<td>{$vo.create_time}</td>
+					<td class="text-c listorder">
+					<input size="3" attr-id="{$vo.id}"  name="listorder" value="{$vo.listorder}"/></td>
+					<td>{$vo.status|status }</td>
+					<td class="td-manage">
+					<a style="text-decoration:none" class="ml-5" onClick="fic_s_edit('','{:url('author/detail', ['id'=>$vo.id])}')" href="javascript:;" title="查看">
+					<i class="Hui-iconfont">&#xe6df;</i></a>
+					 <a style="text-decoration:none" class="ml-5"  href="{:url('author/status',['id'=>$vo.id, 'status'=>0])}" title="待审">
+					 <i class="Hui-iconfont">待审</i>
+					 </a>
+					 </td>
+				</tr>
+
+{/volist}
+{if condition="count($author) eq 0 "}
+
+<tr class="text-c">
+<td>{$zang}</td>
+</tr>
+{/if}
+			</tbody>
+		</table>
+	</div>
+
+
+</div>
+
+  {:pagination($author)}
+					</div></div>
+								
+								
+								
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div>
+					
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+			<div class="footer">
+				<div class="footer-inner">
+					<div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">Ace</span>
+							Application &copy; 2013-2014
+						</span>
+
+						&nbsp; &nbsp;
+						<span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+	<!-- 	加载js类库 -->
+	{include file="public/footer" /}
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+
+<![endif]-->
+<script>
+/**定义页面全局变量**/
+	var SCOPE ={
+			 'city_url' : "{:url('api/city/getCitysByParentId')}",
+			 'listorder_url':"{:url('author/listorder')}",
+	    "uploadify_swf" : "__STATIC__/admin/uploadify/uploadify.swf",
+	    "image_upload" : "{:url('api/image/upload')}",
+	};
+
+</script>
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='__STATIC__/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+
+
+	
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- 头部 -->
+{include file="public/head" /}
+
+
+<div class="module"><!-- 热书强推 -->
+  <h2 class="tit-news"><span>{$story.story_tle}</span></h2>
+  <ul class="list">
+  {if condition ="count($storyares) eq 0"}
+  <li>您查询的分类暂时没有作者上传</li>
+  {else/}
+  {volist name='storyares' id='vo'}
+    <li class="li2"><a href="{:url('listres/index',['id'=>$vo.id,'pm_id'=>$vo.pm_id])}"  title="{$vo.tle_name} ">{$vo.tle_name}  </a>
+ 点击率：<span>{$vo.click>10000?ceil($vo.click/10000).'万':$vo.click}</span> ||
+      作者：{$authorArr[$vo.pm_id]}</li>
+{/volist}
+{/if}
+</ul>
+</div>
+
+
+<!-- ad -->
+<footer>
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+  <div class="f-link"><b>友情链接：</b><a href="" target="_blank"></a> | <a href="">更多</a></div>  <p class="copyright">
+
+温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index')}">首页</a>  
+</p>
+</footer>
+</body>
+</html> 

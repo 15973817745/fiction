@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>霎时小说网</title>
+<meta content="t.xs.cn" name="author">
+<meta content="" name="keywords">
+<meta content="" name="description">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-_web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no" />
+<meta charset="utf8">
+<link href="" rel="apple-touch-icon-precomposed">
+<script src="__STATIC__/js/xui-2.js"></script>
+<script src="__STATIC__/js/RNUI.js"></script>
+<link href="__STATIC__/css/t.css" rel="stylesheet" type="text/css">
+</head>
+<body class="novel">
+<a id="top"></a>
+  <header> <!-- 头部 -->
+    <h1>《{$storyares.tle_name}》</h1>
+    <div class="login">
+		<a class="common-btn2" href="{:url('index/index')}">返回首页</a>
+	</div>
+  </header>
+
+
+	<div class="bottonTools1">
+	{if condition="$Request.get.name_zhang eq 1"}
+	<a href="{:url('listres/index',['id'=>$Request.get.id,'pm_id'=>$storyares.pm_id])}">目录</a>
+<a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$Request.get.name_zhang+1 > $storyzhang[$storyares.id]?$Request.get.name_zhang:$Request.get.name_zhang+1])}">下一页</a>
+{else /}
+{if condition='$Request.get.name_zhang eq $storyzhang[$storyares.id]'}
+	<a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$Request.get.name_zhang-1<=0?Request.get.name_zhang:$Request.get.name_zhang-1])}">上一页</a>
+	<a href="{:url('listres/index',['id'=>$Request.get.id,'pm_id'=>$storyares.pm_id])}">目录</a>
+{else /}
+	<a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$Request.get.name_zhang-1])}">上一页</a>
+<a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$Request.get.name_zhang+1])}">下一页</a>
+{/if}
+{/if}
+</div>
+	<div class="ContentBody" >
+			<h2>第{$storycas.name_zhang}章：{$storycas.tle_name}</h2>
+			<div id="article">
+					{$storycas.content|html_entity_decode}							　　　<div id="ads1" style="position:relative; width:320px; height:48px;">
+				</div>
+		
+						</div>
+					</div>
+	</div>
+		
+
+	  
+	<div class="bottonTools1">	
+	{if condition="$Request.get.name_zhang eq 1"}
+	<a href="{:url('listres/index',['id'=>$Request.get.id,'pm_id'=>$storyares.pm_id])}">目录</a>
+<a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$Request.get.name_zhang+1>$storyzhang[$storyares.id]?$Request.get.name_zhang:$Request.get.name_zhang+1])}">下一页</a>
+{else /}
+{if condition='$Request.get.name_zhang eq $storyzhang[$storyares.id]'}
+	<a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$Request.get.name_zhang-1<=0?$Request.get.name_zhang:$Request.get.name_zhang-1])}">上一页</a>
+	<a href="{:url('listres/index',['id'=>$Request.get.id,'pm_id'=>$storyares.pm_id])}">目录</a>
+{else /}
+	<a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$Request.get.name_zhang-1])}">上一页</a>
+<a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$Request.get.name_zhang+1])}">下一页</a>
+{/if}
+{/if}
+
+</div>
+	
+		<div class="bottonTools"> 
+	 {if condition="$storyares.collect eq 1"}
+    <a class="btn-blue" >已收藏</a>
+  {else /}
+  <a class="btn-blue" href="{:url('listres/collect',['id'=>$Request.get.id,'collect'=>1,'pm_id'=>$storyares.pm_id])}">加入收藏</a>
+  {/if}</div>
+</div>
+<footer>
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index/index')}">首页</a>  
+</p>
+</footer>
+</body>
+</html>

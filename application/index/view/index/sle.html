@@ -1,0 +1,38 @@
+<!-- 头部 -->
+{include file="public/head" /}
+</div>
+<div class="zjyd">最近阅读：亲，您最近没有阅读。</div><!-- 公告 -->
+<div id="marqueeid"><a href="web/index.php@a=post&post=46">★小说阅读网年度大盘点火热开始</a> <br/><a href="topic/zp/37/default.htm">★网络文学经典作品专题</a> </div>
+ {if condition="count($storyares) eq 0 "}
+
+
+<dt>{$add}</dt>
+
+{else /}
+ {volist name='storyares' id='vo'}
+ <dl class="artPanel"><a href="{:url('listres/index',['id'=>$vo.id,'pm_id'=>$vo.pm_id])}"  title="[{$storyArrs[$vo.parent_id]}] {$vo.tle_name}" >
+    <dt>《[{$storyArrs[$vo.parent_id]}] {$vo.tle_name}》</dt>
+    <dd class="pic"> <img src="{$vo.logo}" alt="[{$storyArrs[$vo.parent_id]}] {$vo.tle_name}"> </dd>
+        <dd class="text" style="margin-left: 130px; ">点击：<span>{$vo.click>10000?ceil($vo.click/10000).'万':$vo.click}</span></dd>
+        <dd class="text" style="margin-left: 130px;margin-top:10px;">类型：{$storyArrs[$vo.parent_id]}</dd>
+    <dd class="info">简介：{$vo.sids|html_entity_decode}</dd></a>
+  </dl>
+  {/volist}
+  {/if}
+  
+  <div class="module"><!-- 热书强推 -->
+    <ul class="list">
+      <h2 class="tit-news"><span>热书强推</span></h2>
+    {volist name='storyareclick' id='vo'}
+								<li ><a href="{:url('listres/index',['id'=>$vo.id,'pm_id'=>$vo.pm_id])}" title="[{$storyArrs[$vo.parent_id]}] {$vo.tle_name}"><font color="red">[{$storyArrs[$vo.parent_id]}] {$vo.tle_name}</font><img src="__STATIC__/images/hot.gif" alt="热门" width="21" height="16" /></a></li>
+			{/volist}				
+			    </ul>
+  </div>
+	</div>
+	<footer >
+ 
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+  <p class="copyright">温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index/index')}">首页</a>
+</footer>
+</body>
+</html> 

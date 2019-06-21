@@ -1,0 +1,221 @@
+<!-- 头部文件 -->
+{include file="public/header" /}
+
+	<body class="no-skin">
+
+	<!-- 	导航栏和选择框 -->
+{include file="public/menu" /}
+				
+
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li id="mData">
+								<i class="ace-icon fa fa-home home-icon active"></i>
+								<a href="{:url('index/index')}">首页</a>
+							</li>
+							<li id="mData">
+								<i class=" active"></i>
+								<a href="{:url('story/add')}">添加小说</a>
+							</li>
+						</ul><!-- /.breadcrumb -->
+
+						<!-- 选择样式 -->
+					{include file='public/page' /}
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+										<h3 class="header smaller lighter blue"></h3>
+										<form action="{:url('story/index')}" method="post">
+											<button type="submit" class=" pull-left btn btn-sm"style="margin:5px;">
+															<span class="bigger-110">转至小说列表</span>
+														</button>
+											</form><!-- 添加按钮 -->	
+										<div class="clearfix">
+											<div class="pull-right tableTools-container"></div>
+										</div>
+
+										<div class="table-header">
+										章节小说
+										</div>
+
+										<!-- div.table-responsive -->
+
+									<div class="page-container">
+	<div class="mt-20">
+		<form class="form-horizontal" role="form" action ="{:url('story/zhangadd')}"  method="post">
+					<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 章节名称</label>
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" placeholder=" 章节名称"  name='section' class="col-xs-10 col-sm-5" />
+											<i class="ace-icon fa fa-leaf green"></i>
+										</div>
+									</div>
+								
+										    
+						 	<div class="space-4"></div>
+										<div class="form-group">
+										     	<label class="col-sm-3 control-label no-padding-right" for="form-field-2">  章节</label>
+		 <span class="help-inline col-xs-12 col-sm-7">
+		 			
+														<div class="col-sm-9">
+									
+											<input type="number" id="form-fi"  value="{$storycasArr+1}"  name='zhang'   class="col-xs-10 col-sm-5" />
+									
+											<i class="ace-icon fa fa-leaf green"></i>
+												</div>
+									
+										     </span>
+										    </div>
+					
+					
+    					<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly">小说内容 </label>
+											<div class="formControls col-xs-8 col-sm-9  roid">
+											<div id='feng'>
+											<input type="radio" name="radio" value="1">上传小说
+											
+											<input type="radio" name="radio" value="2">写小说
+											</div>
+											        <script  id="editor"  type="text/plain" name="image1" style="width:80%;height:300px; display:none"></script>
+											        <div class="formControls col-xs-8 col-sm-9"  id="jie" style='display:none'>
+											        <input id="file_cent_upload"  type="file" multiple="true" >
+        											<img style="display: none" id="upload_cant_org_code_img" src="" width="150" height="150">
+       												 <input id="file_cent_upload_image" name="image1" type="hidden" multiple="true" value="">
+       												 </div>
+											      </div>
+											    
+									</div>
+
+			<input type="hidden" name="id" value="{$Request.get.id}">
+									<div class="clearfix form-actions">
+										<div class="col-md-offset-3 col-md-9">
+											<button class="btn btn-info" type="sbmit">
+												<i class="ace-icon fa fa-check bigger-110"></i>
+												确定
+											</button>
+
+											&nbsp; &nbsp; &nbsp;
+											<button class="btn" type="reset">
+												<i class="ace-icon fa fa-undo bigger-110"></i>
+												重置
+											</button>
+										</div>
+									</div>
+
+								
+
+									
+													
+													
+				</div>
+								</form>
+	</div>
+
+
+</div>
+
+					</div></div>
+								
+								
+								
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div>
+					
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+			<div class="footer">
+				<div class="footer-inner">
+					<div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">Ace</span>
+							Application &copy; 2013-2014
+						</span>
+
+						&nbsp; &nbsp;
+						<span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+	<!-- 	加载js类库 -->
+	{include file="public/footer" /}
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+
+<![endif]-->
+<script>
+/**定义页面全局变量**/
+	var SCOPE ={
+		'listorder_url':"{:url('story/listorder')}",
+	    "uploadify_swf" : "__STATIC__/admin/uploadify/uploadify.swf",
+	    "image_upload" : "{:url('api/image/upload')}",
+	};
+
+</script>
+<script type='text/javascript'  src='__STATIC__/admin/js/jquery.combo.select.js'></script>
+  <script>
+
+				   												 var ue = UE.getEditor('editor');
+				   		
+		
+				   												
+												</script>
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='__STATIC__/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		      
+		       $('.roid input[name="radio"]').click(function(){
+		    	   var val=$('input:radio[name="radio"]:checked').val(); 
+		    	   console.log(val);
+		    	   if(val==1){
+		    	  		 $('#feng').css('display','none');
+		    	  		 $('#jie ').css('display','');
+		    	  	 } else if(val==2){
+		    	  		 $('#feng').css('display','none');
+		    	  		 $('#editor').css('display','');
+		    	  	 }
+		       });
+		       
+		       
+		    	    $('select').comboSelect();
+				  
+			</script>
+
+
+	
+	</body>
+</html>

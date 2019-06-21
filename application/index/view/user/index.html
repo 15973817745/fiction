@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>霎时小说网</title>
+<meta content="t.xs.cn" name="author">
+<meta content="" name="keywords">
+<meta content="" name="description">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-_web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no" />
+<meta charset="utf8">
+<link href="" rel="apple-touch-icon-precomposed">
+<script src="__STATIC__/js/xui-2.js"></script>
+<script src="__STATIC__/js/RNUI.js"></script>
+<link href="__STATIC__/css/t.css" rel="stylesheet" type="text/css">
+</head>
+<body class="index">
+<a id="top"></a>
+<header> <!-- 头部 -->
+  
+    <h1 class="logo"> <a href="{:url('index/index')}"  title="霎时，转瞬即逝"><img src="__STATIC__/images/logo-t.png" width="120" height="40" ></a> </h1>
+	
+  <nav> <!-- 导航 --> 
+   <a href="{:url('index/index')}" title="">首页</a> ｜  <a href="{:url('classify/index')}" title="">分类</a> ｜ <a href="{:url('row/top')}" title="">排行</a> ｜ 
+     <a href="{:url('collect/index')}" title="">书库</a> ｜   <a href="{:url('user/index')}" title="">用户</a></nav>
+</header>
+  <div style="overflow: hidden; margin:0 auto; width:375px" class="gallery clearfix">
+  {if condition='$ur neq 0'}
+  {if condition='$user.per_id neq 0'}
+      <ul style=''>
+	  
+	      <li style= 'height:334px;'>
+	   
+        <dl style='min-width:375px;'>
+          <dd class="pic"   style=' margin-left:30px;margin-top:4px'><img src="{if condition='empty($user.tupm)'}__STATIC__/images/tou/2.jpg{else /}{$user.tupm==null ?'':$user.tupm}{/if}" alt="{$user.username}" style='width:80px ; height:80px'> </dd>
+        <br>
+        	<dd class="pic">名字：<span>{$user.username}</span></dd>
+        	  	<dd class="pic" style='font-size:12px ;padding:0'>个性签名：<span>{$user.gexing}</span></dd>
+        	<dd class="" style='margin-top:72px'>
+        	<div class="newUpdate" style='margin:0; padding:0;background:-webkit-gradient(linear, left top, left bottom, from(#F7F7F7), to(#be8ad8)); height:35px;'><a class="" href="{:url('User/book',['id'=>$user.id])}" style='text-align:center;font-size:24px;padding:0;height:35px;'>查看自己的小说</a></div></dd>
+	
+		<dd class="" style='margin-top:12px'>
+        	<div class="newUpdate" style='margin:0; padding:0;background:-webkit-gradient(linear, left top, left bottom, from(#F7F7F7), to(#be8ad8)); height:35px;'><a class="" href="{:url('User/add',['id'=>$user.id])}" style='text-align:center;font-size:24px;padding:0;height:35px;'>写小说</a></div></dd>
+
+        	<dd class="" style='margin-top:12px'>
+        	<div class="newUpdate" style='margin:0; padding:0;background:-webkit-gradient(linear, left top, left bottom, from(#F7F7F7), to(#d88a8a)); height:35px;'><a class="" href="{:url('login/logout')}" style='text-align:center;font-size:24px;padding:0;height:35px;'>退出</a></div></dd>
+	  </div>
+        </dl>
+        
+	</li>
+	    </ul>
+ {else /}
+    <ul style=''>
+	  
+	      <li  align='cneter'>
+	   
+        <dl style='min-width:375px;'>
+          <dd class="pic"   style=' margin-left:30px;margin-top:4px'><img src="{if condition='empty($user.tupm)'}__STATIC__/images/tou/2.jpg{else /}{$user.tupm==null ?'':$user.tupm}{/if}" alt="{$user.username}" style='width:80px ; height:80px'> </dd>
+        <br>
+        	<dd class="pic">名字：<span>{$user.username}</span></dd>
+        	<dd class="pic" style='font-size:12px;padding:0'>个性签名：<span>{$user.gexing}</span></dd>
+        	<dd class="" style='margin-top:72px'>
+        	<div class="newUpdate" style='margin:0; padding:0;background:-webkit-gradient(linear, left top, left bottom, from(#F7F7F7), to(#be8ad8)); height:35px;'><a class="" href="{:url('User/author',['id'=>$user.id])}" style='text-align:center;font-size:24px;padding:0;height:35px;'>升级为作者</a></div></dd>
+
+        	<dd class="" style='margin-top:12px'>
+        	<div class="newUpdate" style='margin:0; padding:0;background:-webkit-gradient(linear, left top, left bottom, from(#F7F7F7), to(#d88a8a)); height:35px;'><a class="" href="{:url('login/logout')}" style='text-align:center;font-size:24px;padding:0;height:35px;'>退出</a></div></dd>
+	  </div>
+        </dl>
+        
+	</li>
+	    </ul>
+{/if}
+	{else /}
+	<ul   style=' width:100%'>
+	<li style='height: 175px ;text-align:center;width:100%;line-height:2em;'>您还没登录呢
+	<dl>
+	<a  href="{:url('login/index')}">
+          <dd class="pic"><img src="__STATIC__/images/tou/{$suiji}.jpg" alt="点击登录">请登录吧 </dd></a>
+        </dl></li>
+	</ul>
+	{/if}
+						    
+  </div>
+
+	<footer >
+ 
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+  <p class="copyright">温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index/index')}">首页</a>
+</footer>
+</body>
+</html> 

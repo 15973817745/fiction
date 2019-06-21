@@ -1,0 +1,169 @@
+<!-- 头部 -->
+{include file="public/head" /}
+	<!-- 百度编辑器 -->
+		<script type="text/javascript" charset="utf-8" src="__STATIC__/utf8-php/ueditor.config.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="__STATIC__/utf8-php/ueditor.all.js"></script>
+		<link rel="stylesheet" href="/static/admin/css/combo.select.css" />
+	
+
+
+	
+</div>
+<div class="module">
+<ul class="list">
+<h2 class="tit-news"><span>写小说</span></h2>
+</ul>
+</div>
+<form class="form-horizontal" role="form" action ="{:url('User/add')}"  method="post" style='margin:0 auto;'>
+					<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 小说名称 </label>
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" placeholder="小说名称"  name='title' class="col-xs-10 col-sm-5" />
+											<i class="ace-icon fa fa-leaf green"></i>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">名称缩写 </label>
+
+										<div class="col-sm-9">
+										
+											<input type="text" id="form-field-1-1" placeholder="名称缩写" name='fiel'  class="col-xs-10 col-sm-5" />
+											<i class="ace-icon fa fa-leaf green"></i>
+										</div>
+									</div>
+					<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 章节名称</label>
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" placeholder=" 章节名称"  name='section' class="col-xs-10 col-sm-5" />
+											<i class="ace-icon fa fa-leaf green"></i>
+										</div>
+									</div>
+							
+						 	<div class="space-4"></div>
+										<div class="form-group">
+										     	<label class="col-sm-3 control-label no-padding-right" for="form-field-2">  章节</label>
+		 <span class="help-inline col-xs-12 col-sm-7">
+		 			
+														<div class="col-sm-9">
+									
+											<input type="number" id="form-fi"  value="1" name='zhang'   class="col-xs-10 col-sm-5" />
+									
+											<i class="ace-icon fa fa-leaf green"></i>
+												</div>
+									
+										     </span>
+										    </div>
+									<div class="space-4"></div>
+
+									<<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-2">小说封面 </label>
+								<div class="formControls col-xs-8 col-sm-9">
+								<ul>		
+       							<li class="ablu"style="background-image:url('__STATIC__/images/c.jpg');width: 100px;height: 100px">
+       								<img style="display: none" id="upload_org_code_img" src="" width="100" height="100">
+                                          <input  id="file_im_upload"  type="file" multiple="true"  name='image' data-url="{:url('api/image/setFile')}"  style="opacity: 0;-ms-filter: 'alpha(opacity=0);'; width:100px; height:100px;">
+                                    </li></ul>	
+       						    <div id="progress">
+        								<div class="bar" style="width: 0%;"></div>
+        								
+        							</div>
+									</div>
+
+									<div class="space-4"></div>
+									
+											<div class="form-group">
+										     	<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 所属分类</label>
+										      <span class="help-inline col-xs-12 col-sm-7">
+														<select name="parent_id" class="custom_theme dowebok"  tabindex="5" >
+														{volist name='story' id='vo'}
+										                 
+										                  <option value="{$vo.id}">{$vo.story_tle}</option>
+										           {/volist}
+										                </select>
+														</span>
+										     
+										    </div>
+    					<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly">小说内容 </label>
+											<div class="formControls col-xs-8 col-sm-9  roid">
+											
+											        <script  id="editor"  type="text/plain" name="image1" style="width:100%;height:300px; "></script>
+											  
+											      </div>
+											    
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">介绍</label>
+
+										<div class="col-sm-9">
+										
+											<textarea  id="editor1"  type="text/plain" name="image1" style="width:100%;height:100px; resize: none;"></textarea>
+										</div>
+									</div>
+	<div class="space-4"></div>
+			<input type="hidden" name="id" value="{$tid}">
+									<div class="clearfix form-actions" style='width:175px; margin:10px auto'>
+										<div class="col-md-offset-3 col-md-9">
+											<button class=" common-btn1 btn btn-info" type="sbmit" style='height:40px; width:60px'>
+											
+												确定
+											</button>
+
+											&nbsp; &nbsp; &nbsp;
+					
+											<a class=" common-btn"  href="{:url('user/index')}" style='height:40px; width:60px;color:#fff ;'>返回</a>
+						
+										</div>
+									</div>
+
+								
+
+									
+													
+													
+				</div>
+</form>
+	</div>
+			
+<script type='text/javascript'  src='/static/admin/js/jquery.combo.select.js'></script>
+	  <script>
+
+	
+
+		 var ue = UE.getEditor('editor');
+
+		  $('select').comboSelect();
+		  $('#file_im_upload').fileupload({
+		        dataType: 'json',
+		        url: "{:url('api/image/setFile')}",//文件的后台接受地址
+		        //设置进度条
+		        progressall: function (e, data) {
+		            var progress = parseInt(data.loaded / data.total * 100);
+		            $('#progress .bar').css(
+		                'width',
+		                progress + '%'
+		            );
+		        },
+		        //上传完成之后的操作，显示在img里面
+		        done: function (e, data){
+		        	console.log(data.result.data);
+		            $("#upload_org_code_img ").attr('src' ,data.result.data);
+		            $("#upload_org_code_img ").show();
+		            $("#file_im_upload").attr("value",data.result.data);
+		        }
+		    });
+		</script>
+	<footer >
+ 
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+  <p class="copyright">温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index/index')}">首页</a>
+</footer>
+</body>
+</html> 

@@ -1,0 +1,133 @@
+<!-- 头部文件 -->
+{include file="public/header" /}
+	<body class="no-skin">
+	<!-- 	导航栏和选择框 -->
+
+				<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li id="mData">
+								<i class="ace-icon fa fa-home home-icon active"></i>
+								首页
+							</li>
+							<li id="mData">
+								<i class=" active"></i>
+								作者列表
+							</li>
+								<li id="mData">
+								<i class=" active"></i>
+								作者查看
+							</li>
+						</ul><!-- /.breadcrumb -->
+	
+		<!-- 选择样式 -->
+					{include file='public/page' /}
+			
+
+				
+				
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+										<h3 class="header smaller lighter blue"></h3>
+											
+										<div class="clearfix">
+											<div class="pull-right tableTools-container"></div>
+										</div>
+
+										<div class="table-header">
+											作者查看
+										</div>
+
+										<!-- div.table-responsive -->
+
+										<!-- div.dataTables_borderWrap -->
+										<div >
+										
+											<form action="" method="POST" enctype="multipart/form-data"  style="font-size:16px;">
+											
+											<table style="margin:0 auto; width:70%;"  class="table">
+											<tr align="left">
+												<td align="right">用户名：</td><td><input type="text" name="name" value="{$author.username}" style="padding-left:10px" readonly  unselectable="on"></td>
+											</tr>
+											<tr align="left">
+												<td align="right">账号：</td><td><input type="text" name="name1" value="{$authoraccount.username}" style="padding-left:10px" readonly  unselectable="on"></td>
+											</tr>
+											<tr align="left">
+												<td align="right">邮件：</td><td><input type="email" name="email"  readonly  unselectable="on" value="{$author.email}" style="padding-left:10px"></td>
+											</tr>
+											<tr align="left">
+												<td align="right">电话：</td><td><input type="tel" name="tel"  readonly  unselectable="on" value="{$author.tel}" style="padding-left:10px"></td>
+											</tr>
+											<tr align="left">
+												<td align="right">城市：</td><td><input type="text" name="ctiy"  readonly  unselectable="on" value="{$cityArrs[substr($author.city_path, 2)]}" style="padding-left:10px"></td>
+											</tr>
+											<tr align="left">
+												<td align="right">头像：</td><td> 
+       						 			<img style="display: none" id="upload_org_code_img" src="__STATIC__/../{$author.logo}" width="150" height="150">
+									   </td>
+											</tr>
+											<tr align="left">
+												<td align="right">上次登录：</td><td><input type="text" name="last"  readonly  unselectable="on" value="{$authoraccount.last_login_time}" style="padding-left:10px"></td>
+											</tr>
+											<tr align="left">
+												<td align="right">作者等级：</td><td><input type="text" name="vip"  readonly  unselectable="on" value="{$authoraccount.wr_id==0?'高级用户':'普通用户'}" style="padding-left:10px"></td>
+											</tr>
+											
+												<tr align="left">
+												<td align="right">  是否通过:</td><td><input type="stutas" name="stutas"  readonly  unselectable="on" value="{$authoraccount.stutas==1?'通过':'不通过'}" style="padding-left:10px"></td>
+											</tr>
+											  
+											  <tr align="left">
+												<td align="right">排序：</td><td><input type="number" name="listorder"  readonly  unselectable="on" value="{$author.listorder}" style="padding-left:10px"></td>
+											  </tr>	 
+											  <tr align="left" >
+													
+											  </table>
+											  
+											</form>
+										
+										</div>
+									</div>
+								</div>
+							
+							</div><!-- /.modal-content -->
+					
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+			
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+	<!-- 	加载js类库 -->
+	{include file="public/footer" /}
+
+		<!-- <![endif]-->
+
+
+		<script type="text/javascript">
+		  /**定义页面全局变量**/
+		  var SCOPE = {
+		    "uploadify_swf" : "__STATIC__/admin/uploadify/uploadify.swf",
+		    "image_upload" : "{:url('api/image/upload')}",
+		  };
+			if('ontouchstart' in document.documentElement) document.write("<script src='__STATIC__/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+	
+	
+	</body>
+</html>

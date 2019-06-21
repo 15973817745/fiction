@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>霎时小说网</title>
+<meta content="t.xs.cn" name="author">
+<meta content="" name="keywords">
+<meta content="" name="description">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-_web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no" />
+<meta charset="utf8">
+<link href="" rel="apple-touch-icon-precomposed">
+<script src="__STATIC__/js/xui-2.js"></script>
+<script src="__STATIC__/js/RNUI.js"></script>
+  <link rel="stylesheet" href="__STATIC__/css/base.css" />
+    <link rel="stylesheet" href="__STATIC__/css/register.css" />
+    <script type="text/javascript" src="__STATIC__/js/html5shiv.js"></script>
+    <script type="text/javascript" src="__STATIC__/js/respond.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/js/jquery-1.11.3.min.js"></script>
+<link href="__STATIC__/css/t.css" rel="stylesheet" type="text/css">
+</head>
+<body class="index">
+<a id="top"></a>
+<header> <!-- 头部 -->
+    <div class="login">
+   
+<a class="common-btn" href="{:url('index')}">登录</a>
+</div>
+    <h1 class="logo"> <a href="@sid=c1bq5dsrlq3h9t30uiqa581m31" title="霎时，转瞬即逝"><img src="__STATIC__/images/logo-t.png" width="120" height="40"></a> </h1>
+	
+  </header>
+        <div class="wrapper">
+        <div class="head">
+       
+            <div class="login-link">
+                <span>霎时注册已经等候多时</span>
+            </div>
+        </div>
+  <div class="content">
+            <form action="{:url('login/login')}" method="post">
+                <p class="pass-form-item">
+                    <label class="pass-label">用户名</label>
+                    <input type="text" name="username" class="pass-text-input" placeholder="请设置用户名">
+                </p>
+                <p class="pass-form-item">
+                    <label class="pass-label">邮箱号</label>
+                    <input type="text" name="email" class="pass-text-input" placeholder="为了保证您的账号安全">
+                </p>
+                
+                <p class="pass-form-item">
+                    <label class="pass-label">密码</label>
+                    <input type="text" name="password" class="pass-text-input" placeholder="请设置登录密码">
+                </p>
+                <p class="pass-form-item">
+                    <label class="pass-label">确认密码</label>
+                    <input type="text" name="repassword" class="pass-text-input" placeholder="请设置登录密码">
+                </p>
+                <p class="pass-form-item">
+                    <label class="pass-label">验证码</label>
+                    <input type="text" name="verifycode" class="pass-text-input " placeholder="请输入验证码">
+                    <div>{:captcha_img()}</div>
+                </p>
+                
+                <p class="pass-form-item">
+                    <input type="submit" value="注册" class="pass-button">
+                </p>
+            </form>
+           
+        </div>
+
+        <div class="foot">
+            <div>
+                <div>2018&nbsp;©lc.fic.com 欢迎您的到来</div>
+            </div>
+        </div>
+</body>
+</html> 

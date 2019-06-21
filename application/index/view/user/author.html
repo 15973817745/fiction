@@ -1,0 +1,189 @@
+<!-- 头部 -->
+{include file="public/head" /}
+<style>
+    .bar {
+        height: 18px;
+        background: green;
+    }
+    .content{
+        width: 100%;text-align: center;margin-top: 70px;
+    }
+    #progress{
+        border-radius:6px;width: 300px;background: red;
+    }
+</style>
+</div>
+<div class="module">
+<ul class="list">
+<h2 class="tit-news"><span>升级为作者</span></h2>
+</ul>
+</div>
+<form class="form-horizontal" role="form" action ="{:url('User/author')}"  method="post" style='margin:0 auto;'>
+					<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 作者昵称</label>
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" placeholder=" 作者昵称"  name='username' class="col-xs-10 col-sm-5" />
+											<i class="ace-icon fa fa-leaf green"></i>
+										</div>
+									</div>
+								<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 上传头像 </label>
+								<div class="formControls col-xs-8 col-sm-9">
+								<ul>		
+       							<li class="ablu"style="background-image:url('__STATIC__/images/c.jpg');width: 100px;height: 100px">
+       								<img style="display: none" id="upload_org_code_img" src="" width="100" height="100">
+                                          <input  id="file_im_upload"  type="file" multiple="true"  name='logo' data-url="{:url('api/image/setFile')}"  style="opacity: 0;-ms-filter: 'alpha(opacity=0);'; width:100px; height:100px;">
+                                    </li></ul>	
+       						    <div id="progress">
+        								<div class="bar" style="width: 0%;"></div>
+        								
+        							</div>
+									</div>
+										    
+						 	<div class="space-4"></div>
+										<div class="form-group">
+										     	<label class="col-sm-3 control-label no-padding-right" for="form-field-2">  email</label>
+		    <span class="help-inline col-xs-12 col-sm-7">
+														<div class="col-sm-9">
+											<input type="email" id="form-fi"   name='email'  placeholder=" email@qq.com"   class="col-xs-10 col-sm-5" />
+											<i class="ace-icon fa fa-leaf green"></i>
+												</div>
+										     </span>
+										    </div>
+										    
+										    <div class="space-4"></div>
+										<div class="form-group">
+										     	<label class="col-sm-3 control-label no-padding-right" for="form-field-2">  电话</label>
+		 <span class="help-inline col-xs-12 col-sm-7">
+														<div class="col-sm-9">
+											<input type="tel" id="form-fi"   name='tel'  placeholder=" 输入电话"   class="col-xs-10 col-sm-5" />
+											<i class="ace-icon fa fa-leaf green"></i>
+												</div>
+										     </span>
+										    </div>
+										    
+						<div class="space-4"></div>
+					    <div class="row cl">
+						    <label class="form-label col-xs-4 col-sm-2">所属城市：</label>
+						    <div class="formControls col-xs-8 col-sm-2">
+								<span class="select-box">
+									<select name="caty_id" class="select  cityId">
+								<option value="0">全部省份</option>
+								{volist name='citys' id='vo'}
+								{if condition ='$vo.parent_id eq 0'}
+								<option value="{$vo.id}" {if condition ="$vo.id eq $Request.get.caty_id"}selected="selected"{/if}>{$vo.name}</option>
+								{/if}
+								{/volist}
+							</select>
+						</span>
+						<span class="select-box inline">
+							<select name="city_id" class="select  se_city_id">
+								<option value="0">全部城市</option>
+							   <option value="0">--请选择--</option>
+				                </select>
+						</span>
+							
+						    </div>
+						  </div>
+					
+					
+    					<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-input-readonly">个性签名: </label>
+											<div class="formControls col-xs-8 col-sm-9  roid">
+											        <textarea  id="editor"  type="text/plain" name="gexing" style="width:100%;height:100px; resize: none;"></textarea>
+									</div>
+									</div>
+
+			<input type="hidden" name="id" value="{$tid}">
+									<div class="clearfix form-actions" style='width:175px; margin:10px auto'>
+										<div class="col-md-offset-3 col-md-9">
+											<button class=" common-btn1 btn btn-info" type="sbmit" style='height:40px; width:60px'>
+											
+												确定
+											</button>
+
+											&nbsp; &nbsp; &nbsp;
+					
+											<a class=" common-btn"  href="{:url('user/index')}" style='height:40px; width:60px;color:#fff ;'>返回</a>
+						
+										</div>
+									</div>
+
+								
+
+									
+													
+													
+				</div>
+</form>
+	</div>
+			{load href="/static/admin/js/common.js" /}
+			<script src="/static/jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js"></script>
+<script src="/static/jQuery-File-Upload-master/js/jquery.iframe-transport.js"></script>
+<script src="/static/jQuery-File-Upload-master/js/jquery.fileupload.js"></script>
+	  <script>
+	  /**定义页面全局变量**/
+		var SCOPE ={
+	  'city_url' : "{:url('api/city/getCitysByParentId')}",
+	  }
+	  
+		 
+		/*$("#file_im_upload").fileupload({
+		url:"{:url('api/image/upload')}",//文件上传地址，当然也可以直接写在input的data-url属性内
+		validation: {
+		allowedExtensions: ['jpeg', 'jpg', 'png']
+		},
+		add: function (e, data) {
+		uploadingBox.uploadingBoxShow();
+		data.submit();
+		},
+		//formData:{param1:"p1",param2:"p2"},//如果需要额外添加参数可以在这里添加
+		done:function(e,result){
+		$('#container_box').hide();
+		//done方法就是上传完毕的回调函数，其他回调函数可以自行查看api
+		//注意result要和jquery的ajax的data参数区分，这个对象包含了整个请求信息
+		//返回的数据在result.result中，假设我们服务器返回了一个json对象
+		if(result.result == "111" || result.result == "222"){
+		window.location="{:url('api/image/upload')}";
+		}
+		else if(result.result == "Invalid file type."){
+		alert("请选择图片类型的文件上传");
+		}
+		else{
+		alert(result.result.msg);
+		}
+		// console.log(JSON.stringify(result.result));
+		}
+		})
+	*/	
+		
+$('#file_im_upload').fileupload({
+        dataType: 'json',
+        url: "{:url('api/image/setFile')}",//文件的后台接受地址
+        //设置进度条
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100);
+            $('#progress .bar').css(
+                'width',
+                progress + '%'
+            );
+        },
+        //上传完成之后的操作，显示在img里面
+        done: function (e, data){
+        	console.log(data.result.data);
+            $("#upload_org_code_img ").attr('src' ,data.result.data);
+            $("#upload_org_code_img ").show();
+            $("#file_im_upload").attr("value",data.result.data);
+        }
+    });
+		</script>
+	<footer >
+ 
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+  <p class="copyright">温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index/index')}">首页</a>
+</footer>
+</body>
+</html> 

@@ -1,0 +1,75 @@
+<!-- 头部 -->
+{include file="public/head" /}
+<style>
+.page{
+	height:30px;
+}
+	.pagination{
+		margin:0 auto;
+	 width:100%;
+	}
+	.pagination li{
+		float:left;
+		color:#e91e63;
+		margin-left:20px;
+	}
+</style>
+  <div class="partlist-info">
+    <dl>
+      <dt>《{$storyares.tle_name}》</dt>
+      <dd class="pic"><a href="" title="{$storyares.tle_name}"> <img src="{$storyares.logo}" alt="{$storyares.tle_name}"></a><br>
+      <dd class='info'>
+        [作者]：<a href="">{$author->username}</a> <br>
+        [类别]：<a href="">{$storyArrs[$storyares.parent_id]}</a> <br>
+        [点击]：<span>{$storyares.click>10000?ceil($storyares.click/10000).'万':$storyares.click}</span><br>
+        [字数]：{$storyCas[$storyares.id]}</dd>
+      <dd class="zTag01"></dd>
+    </dl>    <div class="newUpdate"><a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$storyzhang[$storyares.id]])}"><span>最新章节：第{$storyzhang[$storyares.id]}章：{$storytle[$storyares.id]}</span>({$storyares.create_time})</a></div>
+	  </div>
+  <div class="bottonTools"><a class="btn-green" href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$storycas[0]->name_zhang])}">开始阅读</a>
+  {if condition="$storyares.collect eq 1"}
+    <a class="btn-blue" >已收藏</a>
+  {else /}
+  <a class="btn-blue" href="{:url('listres/collect',['id'=>$Request.get.id,'collect'=>1,'pm_id'=>$storyares.pm_id])}">加入收藏</a>
+  {/if}
+</div>
+  
+	
+  <div class="bookInto"><span>简介：{$storyares.sids|html_entity_decode}</span></div>
+  <div id="ads1" style="position:relative; width:320px; height:48px;">
+</div>
+
+  
+  <div class="bookMenu">
+
+					<h2>目录</h2>
+				    <ul class="list">
+	{volist name='storycas' id='vo'}
+		<li ><a href="{:url('listres/cont',['id'=>$Request.get.id,'name_zhang'=>$vo.name_zhang])}"><span>第{$vo.name_zhang}章：{$vo.tle_name}</span>({$vo.words})</a></li>
+	   {/volist}
+	    </ul>
+		
+    <div class="page ">
+      {:pagination($storycas)}
+    </div>
+		</div>
+  <div class="module"> <!-- 作者其它作品 -->
+    <h2><a href="web/user.php@a=author_home&authorid=11209027" target="_blank"><span>作者其它作品</span></a></h2>
+    <ul class="list">
+    {if condition="count($storyares) eq 0"}
+    	<li >此作者暂无其他作品上传</li>
+    {else /}
+    	{volist name='storyarespm'  id='vo'}
+	  		<li ><a href="{:url('listres/index',['id'=>$vo.id,'pm_id'=>$vo.pm_id])}">[{$storyArrs[$vo.id]}]{$vo.tle_name}</a></li>
+	  		{/volist}
+	  		{/if}
+	      </ul>
+  </div>
+ 
+<footer>
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index')}">首页</a>  
+</p>
+</footer>
+</body>
+</html> 

@@ -1,0 +1,102 @@
+<!-- 头部 -->
+{include file="public/head" /}
+
+
+<div class="zjyd">最近阅读：亲，您最近没有阅读。</div><!-- 公告 -->
+<div id="marqueeid"><a href="">★小说阅读网年度大盘点火热开始</a> <br/><a href="">★网络文学经典作品专题</a> </div>
+
+
+<!-- 轮播模块 -->
+<div class="module indexPhoto"> 
+  <div style="overflow: hidden;" class="gallery clearfix">
+    <ul style="width:8640px;">
+
+	    {volist name='storyare' id='vo'}
+	      <li onclick="" >
+        <dl>
+        <a href="{:url('listres/index',['id'=>$vo.id,'pm_id'=>$vo.pm_id])}" title="{$vo.tle_name}" > 
+          <dt>《{$vo.tle_name}》</dt>
+          <dd class="pic"><img src="{$vo.logo}" alt="{$vo.tle_name}"> </dd></a>
+         <dd class="text">点击：<span>{$vo.click>10000?ceil($vo.click/10000).'万':$vo.click}</span></dd>
+          <dd class="text">类型：{$storyArrs[$vo.parent_id]}</dd>
+          <dd class="info">简介：{$vo.sids|html_entity_decode}</dd>
+        </dl>
+	</li>
+	    
+	{/volist}
+						    </ul>
+  </div>
+  <div class="ctrls">
+    <div class="imgPageBtn imgPageBtn-l"></div>
+    <ul>
+						<li class="current"></li>
+								<li class=""></li>
+								<li class=""></li>
+								<li class=""></li>
+		 </ul>
+    <div class="imgPageBtn" id="bt"></div>
+  </div>
+</div>
+
+
+<div class="module"><!-- 热书强推 -->
+  <h2 class="tit-news"><span>热书强推</span></h2>
+  <ul class="list">
+  {volist name='storyareclick' id='vo'}
+    <li class="li2"><a href="{:url('listres/index',['id'=>$vo.id,'pm_id'=>$vo.pm_id])}"  title="[{$storyArrs[$vo.parent_id]}]{$vo.tle_name} ">[{$storyArrs[$vo.parent_id]}]{$vo.tle_name}  </a></li>
+{/volist}
+</ul>
+</div>
+
+<div class="module"> <!-- 新书品尝 -->
+  <h2 class="tit-news"><span>新书品尝</span></h2>
+  <ul class="list">
+    {volist name='storyarecreate' id='vo'}
+    <li ><a href="{:url('listres/index',['id'=>$vo.id,'pm_id'=>$vo.pm_id])}" title="[{$storyArrs[$vo.parent_id]}]{$vo.tle_name}">[{$storyArrs[$vo.parent_id]}]{$vo.tle_name} </a></li>
+    {/volist}
+ </ul>
+</div>
+<div id="ads1" style="position:relative; width:320px; height:48px;">
+</div>
+<!-- ad -->
+<footer>
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+  <div class="f-link"><b>友情链接：</b><a href="" target="_blank"></a> | <a href="">更多</a></div>  <p class="copyright">
+
+温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index')}">首页</a>  
+</p>
+</footer>
+<script>
+	//导航
+	NTUI.htmlHelper.navigator();
+	//图集
+	var photoCtrls = X('.indexPhoto .ctrls li'),imgPageBtn = X('.imgPageBtn'),
+	gallerySlide = new NTUI.slide(X('.gallery')[0],{
+			onTouchEnd:function(e,cp){
+				photoCtrls.removeClass('current');
+				photoCtrls[cp].className = 'current';
+			}
+	});
+	imgPageBtn.click(function(){
+		if(this.className.indexOf('imgPageBtn-l')===-1){
+			gallerySlide.next(0.4,1);
+		}
+		else{
+			gallerySlide.prev(0.4,1);
+		}
+	});	
+	
+	setInterval(function(){
+		 if(document.all){
+               //IE
+			   document.getElementById("a1").click();                 
+        }else{  
+              //firefox 里面触发
+               var event = document.createEvent("MouseEvents");  
+               event .initEvent("click",true,true);  
+              document.getElementById('bt').dispatchEvent(event );  
+       }   
+   	},5000);
+</script>
+</body>
+</html> 

@@ -1,0 +1,125 @@
+
+<!-- 头部文件 -->
+{include file="public/header" /}
+	<body class="no-skin" style='height:200px;'>
+	<!-- 	导航栏和选择框 -->
+
+				<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li id="mData">
+								<i class="ace-icon fa fa-home home-icon active"></i>
+								首页
+							</li>
+							<li id="mData">
+								<i class=" active"></i>
+								小说列表
+							</li>
+								<li id="mData">
+								<i class=" active"></i>
+								修改介绍
+							</li>
+						</ul><!-- /.breadcrumb -->
+	
+		<!-- 选择样式 -->
+					{include file='public/page' /}
+			
+
+				
+				
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row">
+									<div class="col-xs-12">
+										<h3 class="header smaller lighter blue"></h3>
+											
+										<div class="clearfix">
+											<div class="pull-right tableTools-container"></div>
+										</div>
+
+										<div class="table-header">
+										修改介绍
+										</div>
+
+										<!-- div.table-responsive -->
+
+										<!-- div.dataTables_borderWrap -->
+										<div >
+										
+							
+		<form class="form-horizontal" role="form" action ="{:url('story/adddellist')}"  method="post">
+									<h1></h1>
+										<div class="form-group">
+										     	<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 分类名称</label>
+										      <span class="help-inline col-xs-12 col-sm-7">
+													<input type="text" id="form-field-1" placeholder="分类"name='story_tle' class="col-xs-10 col-sm-5" />
+											<i class="ace-icon fa fa-leaf green"></i>
+														</span>
+										    </div>
+						<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">介绍</label>
+
+										<div class="col-sm-9">
+											  <script  id="editor1"  type="text/plain" name="description1" placeholder="介绍" style="width:100%;height:300px; "></script>
+										</div>
+									</div>
+									<div class="clearfix form-actions">
+									<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button  type="submit" class="btn btn-primary radius" ><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+				
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+									</div>
+
+								
+
+									
+													
+													
+				</div>
+								</form>
+										
+										</div>
+									</div>
+								</div>
+							
+							</div><!-- /.modal-content -->
+					
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+		
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+	<!-- 	加载js类库 -->
+	{include file="public/footer" /}
+
+		<!-- <![endif]-->
+
+
+		<script type="text/javascript">
+		  /**定义页面全局变量**/
+		  var SCOPE = {
+		    "uploadify_swf" : "__STATIC__/admin/uploadify/uploadify.swf",
+		    "image_upload" : "{:url('api/image/upload')}",
+		  };
+			if('ontouchstart' in document.documentElement) document.write("<script src='__STATIC__/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			 var ue = UE.getEditor('editor1');
+    	  
+			</script>
+	
+	</body>
+</html>

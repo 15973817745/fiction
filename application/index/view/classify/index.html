@@ -1,0 +1,33 @@
+<!-- 头部 -->
+{include file="public/head" /}
+<style>
+
+
+</style>
+<!-- 公告 -->
+<div id="marqueeid"><a href="">★小说阅读网年度大盘点火热开始</a> <br/><a href="">★网络文学经典作品专题</a> </div>
+<div class='type'>
+  <div class="module-type"> <!-- 热门分类 -->
+  <h2><span>热门分类</span></h2>
+  <p class="list-type">
+  {volist name='storyclick' id='vo'}
+   <a href="{:url('classify/ify',['id'=>$vo.id])}">{$vo.story_tle}</a>
+ {/volist}
+  </div>
+<div class="module-type"> <!-- 全部分类 -->
+  <h2><span>全部分类</span></h2>
+  <p class="list-type q-list">
+  {volist name='story' id='vo'}
+   <a class='tit' href="{:url('classify/ify',['id'=>$vo.id])}" >{$vo.story_tle}</a>
+ 
+ {/volist}
+  </p>
+</div>
+</div>
+<footer style='float:left ;width:100%'>
+ 
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+  <p class="copyright">温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index/index')}">首页</a>
+</footer>
+</body>
+</html> 

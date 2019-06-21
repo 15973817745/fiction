@@ -1,0 +1,30 @@
+<!-- 头部 -->
+{include file="public/head" /}
+</div>
+<div class="module">
+<ul class="list">
+<h2 class="tit-news"><span>已写书</span></h2>
+</ul>
+</div>
+{if condition="count($storyaresct) eq 0 "}
+<dt>{$add}</dt>
+{else /}
+ {volist name='storyaresct' id='vo'}
+ <dl class="artPanel"><a href="{:url('listres/index',['id'=>$vo.id,'pm_id'=>$vo.pm_id])}"  title="[{$storyArrs[$vo.parent_id]}] {$vo.tle_name}">
+    <dt>《[{$storyArrs[$vo.parent_id]}] {$vo.tle_name}》</dt>
+    <dd class="pic"> <img src="{$vo.logo}" alt="[{$storyArrs[$vo.parent_id]}] {$vo.tle_name}"> </dd>
+        <dd class="text" style="margin-left: 130px; ">点击：<span>{$vo.click>10000?ceil($vo.click/10000).'万':$vo.click}</span></dd>
+        <dd class="text" style="margin-left: 130px;margin-top:10px;">类型：{$storyArrs[$vo.parent_id]}</dd>
+    <dd class="info" style="margin-top:30px;    margin-left: 254px; "><a style='color:#b80000' href="{:url('User/editadd',['id'=>$vo.id,'tid'=>$vo.pm_id])}">继续写书</a></dd></a>
+  </dl>
+  {/volist}
+  {/if}
+
+	</div>
+	<footer >
+ 
+  <p class="mii"><a href="">联系客服</a> | <a href="">商务合作</a> | <a href="">帮助</a> | <a href="">建议</a> </p>
+  <p class="copyright">温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="{:url('index/index')}">首页</a>
+</footer>
+</body>
+</html> 
